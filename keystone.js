@@ -1,37 +1,33 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
 require('dotenv').config();
+require('./require.js')
 
 // Require keystone
 var keystone = require('keystone');
-var cons = require('consolidate');
-var nunjucks = require('nunjucks');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
 keystone.init({
-	'name': 'handmade.backend',
-	'brand': 'handmade.backend',
+	'name': 'handmade-backend',
+	'brand': 'handmade-backend',
+	'mongo': process.env.MONGO_URI,
 
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
-	'view engine': '.html',
-	'custom engine': cons.nunjucks,
+	'signin logo': ['/logo.png', 200, 200], // relative to public directory
 
-	'emails': 'templates/emails',
-
-	'auto update': true,
+	'auto update': (process.env.AUTO_UPDATE === 'true'),
 	'session': true,
 	'auth': true,
 	'user model': 'User',
 });
 
 // Load your project's Models
-keystone.import('models');
+keystone.import('lib/models')
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
@@ -43,30 +39,17 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
-// Load your project's Routes
-keystone.set('routes', require('./routes'));
+keystone.set('cors allow origin', true)
 
+// Load your project's Routes
+keystone.set('routes', requireRoot('lib/routes'))
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['posts', 'post-categories'],
 	galleries: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
 });
 
 // Start Keystone to connect to your database and initialise the web server
-
-
-if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
-	console.log('----------------------------------------'
-	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
-	+ '\n----------------------------------------'
-	+ '\nYou have opted into email sending but have not provided'
-	+ '\nmailgun credentials. Attempts to send will fail.'
-	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
-	+ '\nset up your mailgun integration');
-}
-
-
 keystone.start();
