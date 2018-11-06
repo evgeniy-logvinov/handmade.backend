@@ -14,7 +14,7 @@ keystone.init({
 	'name': 'handmade-backend',
 	'brand': 'handmade-backend',
 	'mongo': process.env.MONGO_URI,
-
+	'cloudinary folders': true,
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',

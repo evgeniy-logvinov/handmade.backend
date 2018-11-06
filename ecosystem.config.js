@@ -18,6 +18,7 @@ module.exports = {
 		env: {
 			'PORT': 8088,
 			'COOKIE_SECRET': 'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t',
+			'CLOUDINARY_URL': 'cloudinary://337649255861516:1OZayLaBCc_Vk6MB8if8Z-8JCxo@evgeniy-logvinov',
 			'NODE_ENV': 'development',
 			'AUTO_UPDATE': true,
 			'MONGO_URI': getMongoUrl(mongoIp, mongoPort, mongoName, mongoUser, mongoPass, mongoAuthSource)
@@ -25,6 +26,7 @@ module.exports = {
 		env_production: {
 			'PORT': 8001,
 			'COOKIE_SECRET': 'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t',
+			'CLOUDINARY_URL': 'cloudinary://337649255861516:1OZayLaBCc_Vk6MB8if8Z-8JCxo@evgeniy-logvinov',
 			'NODE_ENV': 'production',
 			'AUTO_UPDATE': true,
 			'MONGO_URI': getMongoUrl(mongoIp, mongoPort, mongoName, mongoUser, mongoPass, mongoAuthSource)
