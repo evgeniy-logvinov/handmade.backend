@@ -18,7 +18,9 @@ keystone.init({
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	'signin logo': ['/logo.png', 200, 200], // relative to public directory
+	'signin logo': ['https://res.cloudinary.com/evgeniy-logvinov/image/upload/v1539775892/handmade.frontend/logo/logoHM.png', 
+					200, 
+					200], // relative to public directory
 
 	'auto update': (process.env.AUTO_UPDATE === 'true'),
 	'session': true,

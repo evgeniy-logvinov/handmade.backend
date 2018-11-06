@@ -7,7 +7,6 @@ const mongoIp = 'ds137862.mlab.com'
 const mongoPort = '37862'
 
 function getMongoUrl(ip, port, name, user, pass, authSource) {
-	console.log('test', 'mongodb://' + (user && pass ? (user + ':' + pass + '@') : '') + ip + ':' + port + '/' + name + '?' + (authSource ? 'authSource=' + authSource : ''))
 	return 'mongodb://' + (user && pass ? (user + ':' + pass + '@') : '') + ip + ':' + port + '/' + name + '?' + (authSource ? 'authSource=' + authSource : '')
 }
 
