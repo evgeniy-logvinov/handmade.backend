@@ -48,8 +48,7 @@ keystone.set('routes', requireRoot('lib/routes'))
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	galleries: 'galleries',
-	enquiries: 'enquiries',
+	products: ['products', 'product-types'],
 	users: 'users',
 });
 
