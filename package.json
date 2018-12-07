@@ -1,8 +1,7 @@
 {
   "name": "handmade-backend",
   "engines": {
-    "node": "10.3.0",
-    "npm": "6.x"
+    "node": "10.x"
   },
   "version": "0.0.0",
   "private": true,
