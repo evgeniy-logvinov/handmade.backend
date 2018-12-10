@@ -31,7 +31,7 @@ pm2 start ecosystem.config.js
 or for prod mode
 
 ```sh
-pm2 start ecosystem.config.js --production
+pm2 start ecosystem.config.js --env production
 ```
 
 ## Elements
