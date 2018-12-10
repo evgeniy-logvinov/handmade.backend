@@ -22,6 +22,6 @@
     "lint": "eslint .",
     "preinstall": "npm install pm2 -g",
     "start": "pm2 start ecosystem.config.js",
-    "start:prod": "pm2 start ecosystem.config.js --production"
+    "start:prod": "pm2 start ecosystem.config.js --env production"
   }
 }
