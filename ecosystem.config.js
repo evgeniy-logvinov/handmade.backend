@@ -1,10 +1,4 @@
-const mongoName = 'handmade-backend'
-const mongoUser = 'handmade'
-const mongoPass = 'handmade1'
-const mongoAuthSource = 'handmade-backend'
-
-const mongoIp = 'ds137862.mlab.com'
-const mongoPort = '37862'
+require('dotenv').config();
 
 function getMongoUrl(ip, port, name, user, pass, authSource) {
 	return 'mongodb://' + (user && pass ? (user + ':' + pass + '@') : '') + ip + ':' + port + '/' + name + '?' + (authSource ? 'authSource=' + authSource : '')
@@ -16,20 +10,20 @@ module.exports = {
 		script: 'keystone.js',
 		watch: true,
 		env: {
-			'PORT': 8088,
-			'COOKIE_SECRET': 'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t',
+			'PORT': process.env.PORT,
+			'COOKIE_SECRET': '',
 			'CLOUDINARY_URL': 'cloudinary://337649255861516:1OZayLaBCc_Vk6MB8if8Z-8JCxo@evgeniy-logvinov',
-			'NODE_ENV': 'development',
+			'NODE_ENV': process.env.NODE_ENV || 'development',
 			'AUTO_UPDATE': true,
-			'MONGO_URI': getMongoUrl(mongoIp, mongoPort, mongoName, mongoUser, mongoPass, mongoAuthSource)
+			'MONGO_URI': getMongoUrl(process.env.MONGO_IP, process.env.MONGO_PORT, process.env.MONGO_NAME, process.env.MONGO_USER, process.env.MONGO_PASS, process.env.MONGO_AUTH_SOURCE)
 		},
 		env_production: {
 			'PORT': process.env.PORT || 8001,
-			'COOKIE_SECRET': 'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t',
-			'CLOUDINARY_URL': 'cloudinary://337649255861516:1OZayLaBCc_Vk6MB8if8Z-8JCxo@evgeniy-logvinov',
-			'NODE_ENV': 'production',
-			'AUTO_UPDATE': true,
-			'MONGO_URI': getMongoUrl(mongoIp, mongoPort, mongoName, mongoUser, mongoPass, mongoAuthSource)
+			'COOKIE_SECRET': process.env.COOKIE_SECRET,
+			'CLOUDINARY_URL': process.env.CLOUDINARY_URL,
+			'NODE_ENV': process.env.NODE_ENV || 'production',
+			'AUTO_UPDATE': process.env.AUTO_UPDATE,
+			'MONGO_URI': process.env.MONGO_URI
 		}
 	}]
 }
