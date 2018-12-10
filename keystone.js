@@ -15,7 +15,6 @@ keystone.init({
 	'brand': 'handmade-backend',
 	'mongo': process.env.MONGO_URI,
 	'cloudinary folders': true,
-	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'signin logo': ['https://res.cloudinary.com/evgeniy-logvinov/image/upload/v1539775892/handmade.frontend/logo/logoHM.png', 
